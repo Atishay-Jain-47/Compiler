@@ -18,7 +18,7 @@ import java.nio.charset.StandardCharsets;
 
 @Slf4j
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"https://compiler-frontend-1wi1.vercel.app/","http://localhost:5173"})
 public class CodeController {
     @Autowired
     private SaveFileService saveFileService;
