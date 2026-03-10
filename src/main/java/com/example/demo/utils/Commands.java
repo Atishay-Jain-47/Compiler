@@ -26,7 +26,7 @@ public class Commands {
                 command.add("-c");
                 command.add("/usr/bin/gcc " + codePath + " -o " + executablePath + " && " + executablePath);
             case Language.JAVA:
-                command.add("/usr/bin/sh");
+                command.add("/usr/bin/bash");
                 command.add("-c");
                 command.add("/usr/bin/java " + codePath);
             case Language.GO:

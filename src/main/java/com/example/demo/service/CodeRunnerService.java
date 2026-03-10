@@ -17,16 +17,22 @@ public class CodeRunnerService {
     public String execute(Language language,String codePath, String inputPath) {
         ArrayList<String> commands = Commands.getCommand(language,codePath);
         String output = "";
+        String errors = "";
 
         ProcessBuilder pb = new ProcessBuilder(commands);
         pb.redirectInput(new File(inputPath));
         try{
             Process process = pb.start();
             output = new String(process.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
+            errors = new String(process.getErrorStream().readAllBytes(), StandardCharsets.UTF_8);
             process.waitFor();
+            System.out.println("output: "+output);
         } catch (Exception e) {
             log.error("e: ", e);
             throw new RuntimeException(e);
+        }
+        if (output.isEmpty()) {
+            return errors;
         }
         return output;
 

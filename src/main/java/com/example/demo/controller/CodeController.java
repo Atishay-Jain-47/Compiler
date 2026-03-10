@@ -7,6 +7,7 @@ import com.example.demo.service.SaveFileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import java.nio.charset.StandardCharsets;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 public class CodeController {
     @Autowired
     private SaveFileService saveFileService;
