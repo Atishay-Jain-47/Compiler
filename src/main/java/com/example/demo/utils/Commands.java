@@ -33,6 +33,10 @@ public class Commands {
                 command.add("/usr/bin/sh");
                 command.add("-c");
                 command.add("/usr/bin/go" +" run "+ codePath);
+            case Language.JS:
+                command.add("/usr/bin/sh");
+                command.add("-c");
+                command.add("/usr/bin/node " + codePath);
         }
         return command;
     }

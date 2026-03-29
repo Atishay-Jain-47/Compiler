@@ -6,5 +6,6 @@ public enum Language {
     JAVA,
     PYTHON,
     C,
-    GO
+    GO,
+    JS
 }

@@ -31,6 +31,7 @@ public class SaveFileService {
             case Language.C -> "main.c";
             case Language.JAVA -> "main.java";
             case Language.GO -> "main.go";
+            case Language.JS -> "main.js";
             default -> throw new IllegalArgumentException(language + " is not supported");
         };
         String codeFilePath = dirPath + fileName;
