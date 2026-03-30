@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.dto.RequestDto;
 import com.example.demo.entity.types.Language;
+import com.example.demo.entity.types.Session;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +17,11 @@ import java.nio.file.Paths;
 public class SaveFileService {
     @Value("${BASE_DIR}")
     private String BASE_DIR;
-    public String saveFile(RequestDto requestDto)  {
-        Language language = requestDto.getLanguage();
-        String userName = requestDto.getUserName();
-        String code = requestDto.getCode();
-        String input = requestDto.getInput();
+    public void saveFile(Session session)  {
+        Language language = session.getLanguage();
+        String userName = session.getUserId();
+        String code = session.getCode();
+        String input = session.getInput();
 
         System.out.println(code);
 
@@ -38,7 +39,8 @@ public class SaveFileService {
         String inputFilePath = dirPath + "input.txt";
         save(code,dirPath, fileName);
         save(input,dirPath,"input.txt");
-        return codeFilePath + ";" +inputFilePath;
+        session.setCodePath(codeFilePath);
+        session.setInputPath(inputFilePath);
     }
     private void save(String content,String dirPath ,String fileName)  {
         try {
