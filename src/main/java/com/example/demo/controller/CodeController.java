@@ -1,13 +1,11 @@
 package com.example.demo.controller;
 
-import com.example.demo.dto.RequestDto;
+import com.example.demo.dto.RunRequestDto;
 import com.example.demo.dto.ResponseDto;
 import com.example.demo.entity.types.Session;
 import com.example.demo.manager.SessionManager;
 import com.example.demo.service.CodeRunnerService;
 import com.example.demo.service.SaveFileService;
-import java.io.*;
-import java.nio.charset.StandardCharsets;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,10 +33,10 @@ public class CodeController {
 
     @PostMapping("/run")
     public ResponseEntity<ResponseDto> runCode(
-        @RequestBody RequestDto requestDto
+        @RequestBody RunRequestDto runRequestDto
     ) {
-        System.out.println(requestDto);
-        Session session = sessionManager.createSession(requestDto);
+        System.out.println(runRequestDto);
+        Session session = sessionManager.createSession(runRequestDto);
         saveFileService.saveFile(session);
         codeRunnerService.execute(session);
         String output = session.getOutput();

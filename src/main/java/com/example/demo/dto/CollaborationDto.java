@@ -1,19 +1,17 @@
 package com.example.demo.dto;
+
 import com.example.demo.entity.types.Language;
+import com.example.demo.entity.types.User;
 import lombok.*;
 
-@Data
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class RequestDto {
+@AllArgsConstructor
+@Builder
+public class CollaborationDto {
     private String userName;
-
-    private Language language;
-
-    private String input;
-
     private String code;
-
+    private Language language;
+    private String input;
 }

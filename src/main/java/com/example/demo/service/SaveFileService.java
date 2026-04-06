@@ -1,12 +1,10 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.RequestDto;
 import com.example.demo.entity.types.Language;
 import com.example.demo.entity.types.Session;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.imageio.IIOException;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -19,7 +17,7 @@ public class SaveFileService {
     private String BASE_DIR;
     public void saveFile(Session session)  {
         Language language = session.getLanguage();
-        String userName = session.getUserId();
+        String userName = session.getUserName();
         String code = session.getCode();
         String input = session.getInput();
 

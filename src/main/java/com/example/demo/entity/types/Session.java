@@ -3,6 +3,9 @@ package com.example.demo.entity.types;
 
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -10,7 +13,7 @@ import lombok.*;
 @Builder
 public class Session {
     private String sessionId;
-    private String userId;
+    private String userName;
     private Language language;
     private String code;
     private String codePath;

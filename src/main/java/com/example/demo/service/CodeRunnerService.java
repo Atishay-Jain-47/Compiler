@@ -1,6 +1,5 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.RequestDto;
 import com.example.demo.entity.types.Language;
 import com.example.demo.entity.types.Session;
 import com.example.demo.utils.Commands;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 @Slf4j
