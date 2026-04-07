@@ -49,9 +49,11 @@ public class SessionManager {
         log.info("session {}",session);
         return session;
     }
-    public void joinUserToRoom(JoinRoomDto joinRoomDto) {
+    public boolean joinUserToRoom(JoinRoomDto joinRoomDto) {
         Session session = sessionIdToSession.get(joinRoomDto.getRoomId());
+        if(session == null) return false;
         sessionIdToUsers.get(joinRoomDto.getRoomId()).add(joinRoomDto.getUserName());
+        return true;
     }
     public Session createSession(RunRequestDto runRequestDto) {
         Session session = Session.builder()

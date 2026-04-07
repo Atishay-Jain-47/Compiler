@@ -38,7 +38,16 @@ public class RoomController {
     }
     @PostMapping("/collab/join")
     public ResponseEntity<CreateSessionResponseDto> joinRoom(@RequestBody JoinRoomDto joinRoomDto) {
-        sessionManager.joinUserToRoom(joinRoomDto);
+        boolean joined = sessionManager.joinUserToRoom(joinRoomDto);
+
+        if(!joined){
+            CreateSessionResponseDto createSessionResponseDto = CreateSessionResponseDto.builder()
+                    .roomId("")
+                    .message("This Room doesn't exist")
+                    .build();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(createSessionResponseDto);
+        }
+
         CreateSessionResponseDto createSessionResponseDto = CreateSessionResponseDto.builder()
                 .roomId(joinRoomDto.getRoomId())
                 .message("Connected to Room "+ joinRoomDto.getRoomId())
