@@ -16,8 +16,15 @@ public class CollaborationController {
     @MessageMapping("/editor.sync/{roomId}")
     @SendTo("/topic/room/{roomId}")
     public YjsPayload handleYjsSync(@DestinationVariable String roomId, YjsPayload payload) {
-        log.info("payload {} {}",payload.getSenderId(),payload.getUpdateBase64());
+
+        // Log based on type to keep your console clean
+        if ("CHAT".equals(payload.getType())) {
+            log.info("Chat in Room {}: [{}] says {}", roomId, payload.getSenderId(), payload.getContent());
+        } else {
+            log.info("Sync Update in Room {}: Type {} from {}", roomId, payload.getType(), payload.getSenderId());
+        }
+
+        // Return the payload: Spring broadcasts this to all subscribers of /topic/room/{roomId}
         return payload;
     }
-
-}
+}    
